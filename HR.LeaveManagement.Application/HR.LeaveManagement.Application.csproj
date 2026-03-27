@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="DTOs\LeaveType\ILeaveTypeDto.CS~RF1143a2c2.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
   </ItemGroup>
@@ -16,10 +20,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\LeaveAllocations\Handlers\Queries\" />
+    <Folder Include="Features\LeaveAllocations\Handlers\Commands\" />
+    <Folder Include="Features\LeaveAllocations\Requests\Commands\" />
+    <Folder Include="Features\LeaveAllocations\Requests\Queries\" />
     <Folder Include="Features\LeaveTypes\Handlers\Commands\" />
-    <Folder Include="Features\LeaveTypes\Handlers\Queries\" />
     <Folder Include="Features\LeaveTypes\Requests\Commands\" />
-    <Folder Include="Features\LeaveTypes\Requests\Queries\" />
   </ItemGroup>
 
 </Project>

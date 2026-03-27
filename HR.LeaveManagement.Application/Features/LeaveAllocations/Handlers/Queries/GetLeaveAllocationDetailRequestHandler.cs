@@ -1,0 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using AutoMapper;
+using HR.LeaveManagement.Application.DTOs.LeaveAllocation;
+using HR.LeaveManagement.Application.Features.LeaveAllocations.Requests.Queries;
+using HR.LeaveManagement.Application.Persistence;
+using MediatR;
+
+namespace HR.LeaveManagement.Application.Features.LeaveAllocations.Handlers.Queries
+{
+    public class GetLeaveAllocationDetailRequestHandler : IRequestHandler<GetLeaveAllocationDetailRequest, LeaveAllocationDto>
+    {
+        private readonly ILeaveAllocationRepository _leaveAllocationRepository;
+        private readonly Mapper _mapper;
+
+        public GetLeaveAllocationDetailRequestHandler(ILeaveAllocationRepository leaveAllocationRepository,Mapper mapper)
+        {
+            _leaveAllocationRepository = leaveAllocationRepository;
+            _mapper = mapper;
+        }
+        public async Task<LeaveAllocationDto> Handle(GetLeaveAllocationDetailRequest request, CancellationToken cancellationToken)
+        {
+            var leaveAllocation = await _leaveAllocationRepository.Get(request.Id);
+            return _mapper.Map<LeaveAllocationDto>(leaveAllocation);
+        }
+    }
+}
