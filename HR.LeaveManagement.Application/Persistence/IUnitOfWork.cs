@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace HR.LeaveManagement.Application.Persistence
 {
-    internal class IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
+        ILeaveAllocationRepository LeaveAllocationRepository { get; }
+        ILeaveRequestRepository LeaveRequestRepository { get; }
+        ILeaveTypeRepository LeaveTypeRepository { get; }
+        Task Save();
     }
 }
